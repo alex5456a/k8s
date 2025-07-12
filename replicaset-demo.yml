@@ -17,3 +17,4 @@ metadata:
         containers:
         - name: my-helloworld-app
         image: hello-world
+        
