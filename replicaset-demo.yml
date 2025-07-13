@@ -4,17 +4,18 @@ metadata:
   name: my-helloworld-rs
   labels:
     app: my-helloworld
-  spec:
-    replicas: 3
-    selector:
-      matchLables:
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-helloworld
+  template:
+    metadata:
+      labels:
         app: my-helloworld
-    template:
-      metadata:
-        lables:
-          app: my-helloworld
-      spec:
-        containers:
-        - name: my-helloworld-app
-        image: hello-world
-        
+    spec:
+      containers:
+      - name: my-helloworld-app
+        image: registry.k8s.io/nginx-slim:0.24
+
+
