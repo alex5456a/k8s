@@ -16,7 +16,7 @@ kind: Service
 metadata:
   name: my-lb
 spec: 
-  type: LoadBalancer
+  type: LoadBalancer  
   selector:
     app: mypod
   ports:
