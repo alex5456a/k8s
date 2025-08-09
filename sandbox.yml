@@ -1,18 +1,17 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: random-number-generator
+  name: web-deployment
 spec:
-  containers:
-  - image: alpine
-    name: alpine
-    command: ["/bin/sh", "-c"]
-    args: ["shuf -i 0-100 -n 1 >> /opt/number.out;"]
-    volumeMounts:
-    - mountPath: /opt
-      name: data-volume
-  volumes:
-  - name: data-volume
-    hostPath:
-      path: D:\data
-      type: Directory
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: web
+          image: nginx
